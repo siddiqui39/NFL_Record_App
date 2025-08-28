@@ -8,8 +8,7 @@ import numpy as np
 st.title('NFL Football Stats (Rushing) Explorer')
 
 st.markdown("""
-This app performs simple webscraping of NFL Football player stats data (focusing on Rushing)!
-* **Python libraries:** base64, pandas, streamlit, numpy, matplotlib, seaborn
+This app performs simple webscraping of NFL Football player stats (focusing on Rushing)!
 * **Data source:** [pro-football-reference.com](https://www.pro-football-reference.com/).
 """)
 
@@ -62,3 +61,34 @@ def filedownload(df):
     return f'<a href="data:file/csv;base64,{b64}" download="player_stats.csv">Download CSV File</a>'
 
 st.markdown(filedownload(df_selected_team), unsafe_allow_html=True)
+
+# Heatmap
+if st.button('Intercorrelation Heatmap'):
+    st.header('Intercorrelation Matrix Heatmap')
+
+    corr = df_selected_team.corr(numeric_only=True)
+    mask = np.triu(np.ones_like(corr, dtype=bool))
+
+    # Create figure with higher DPI for sharper output
+    fig, ax = plt.subplots(figsize=(12, 10), dpi=120)
+
+    sns.heatmap(
+        corr,
+        mask=mask,
+        vmax=1,
+        square=True,
+        annot=True,
+        fmt=".2f",
+        cmap='coolwarm',
+        linewidths=0.5,
+        cbar_kws={"shrink": 0.8, "label": "Correlation"}
+    )
+
+    # Improve layout
+    plt.xticks(rotation=45, ha='right')
+    plt.yticks(rotation=0)
+    plt.title('Intercorrelation Matrix Heatmap', fontsize=16)
+    plt.tight_layout()
+
+    # Render in Streamlit
+    st.pyplot(fig)

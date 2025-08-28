@@ -1,0 +1,7 @@
+streamlit==1.49.0
+pandas==2.3.2
+numpy==2.3.2
+matplotlib==3.8.1
+seaborn==0.12.2
+lxml==6.0.1
+html5lib==1.1
