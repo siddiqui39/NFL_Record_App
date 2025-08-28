@@ -13,5 +13,9 @@ This Streamlit app allows you to explore NFL football player rushing statistics 
 - Visualize numeric correlations with a **heatmap**.
 ## Requirements
 - Python 3.10 or higher
-- Streamlit 
+- Streamlit
 
+ <div>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/Python-logo-notext.svg" width="80" alt="Python Logo" style="display:inline-block; margin-right:10px;">
+  <img src="https://streamlit.io/images/brand/streamlit-mark-color.svg" width="80" alt="Streamlit Logo" style="display:inline-block;">
+</div>
